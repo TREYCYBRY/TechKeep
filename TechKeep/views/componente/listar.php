@@ -188,7 +188,7 @@ $componentes = $model->listar();
     </style>
 <!-- Fin Barra de navegaccion -->
 
-<h2>🧩 Listado de Componentes</h2>
+<h2>Listado de Componentes</h2>
 <a href="agregar.php">➕ Agregar componente</a>
 <br><br>
 

@@ -186,7 +186,7 @@ define('BASE_URL', 'http://localhost/Soporte/TechKeep/');
     </style>
 <!-- Fin Barra de navegaccion -->
 
-<h2>📋 Categorías registradas</h2>
+<h2>Categorías registradas</h2>
 <a href="categorias_agregar.php" class="btn">➕ Nueva categoría</a>
 <br><br>
 

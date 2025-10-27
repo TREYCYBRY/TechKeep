@@ -187,7 +187,7 @@ include __DIR__ . '/../includes/header.php';
     </style>
 <!-- Fin Barra de navegaccion -->
 
-<h2>📍 Ubicaciones registradas</h2>
+<h2>Ubicaciones registradas</h2>
 <a href="ubicaciones_agregar.php" class="btn">➕ Nueva ubicación</a>
 <br><br>
 

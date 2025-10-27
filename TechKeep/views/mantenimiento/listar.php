@@ -1,8 +1,9 @@
 <?php
-require_once __DIR__ . '/../../models/Proveedor.php';
+require_once __DIR__ . '/../../models/mantenimiento.php';
 define('BASE_URL', 'http://localhost/Soporte/TechKeep/');
-$proveedor = new Proveedor();
-$lista = $proveedor->listar();
+$mantenimiento = new Mantenimiento();
+$lista = $mantenimiento->listar();
+
 include __DIR__ . '/../includes/header.php';
 ?>
 
@@ -186,35 +187,42 @@ include __DIR__ . '/../includes/header.php';
     </style>
 <!-- Fin Barra de navegaccion -->
 
-<h2>📦 Lista de Proveedores</h2>
-<a href="proveedores_agregar.php" class="btn">➕ Nuevo proveedor</a>
-<br><br>
+<h2>Lista de Mantenimientos</h2>
+<a href="agregar.php">➕ Nuevo Mantenimiento</a><br><br>
 
-<table border="1" cellpadding="8" style="border-collapse: collapse;">
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Contacto</th>
-        <th>Teléfono</th>
-        <th>Correo</th>
-        <th>Dirección</th>
-        <th>Acciones</th>
-    </tr>
-    <?php foreach ($lista as $p): ?>
-    <tr>
-        <td><?= $p['id_proveedor'] ?></td>
-        <td><?= htmlspecialchars($p['nombre']) ?></td>
-        <td><?= htmlspecialchars($p['contacto']) ?></td>
-        <td><?= htmlspecialchars($p['telefono']) ?></td>
-        <td><?= htmlspecialchars($p['correo']) ?></td>
-        <td><?= htmlspecialchars($p['direccion']) ?></td>
-        <td>
-            <a href="proveedores_editar.php?id=<?= $p['id_proveedor'] ?>">✏️ Editar</a> |
-            <a href="../../controllers/proveedorController.php?accion=eliminar&id=<?= $p['id_proveedor'] ?>"
-               onclick="return confirm('¿Eliminar este proveedor?')">🗑️ Eliminar</a>
-        </td>
-    </tr>
-    <?php endforeach; ?>
+<table border="1" cellpadding="6">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Equipo</th>
+            <th>Tipo</th>
+            <th>Técnico</th>
+            <th>Fecha</th>
+            <th>Costo</th>
+            <th>Estado</th>
+            <th>Próximo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($lista as $m): ?>
+            <tr>
+                <td><?= htmlspecialchars($m['id_mantenimiento']) ?></td>
+                <td><?= htmlspecialchars($m['equipo']) ?></td>
+                <td><?= htmlspecialchars($m['tipo_mantenimiento']) ?></td>
+                <td><?= htmlspecialchars($m['tecnico'] ?? '—') ?></td>
+                <td><?= htmlspecialchars($m['fecha']) ?></td>
+                <td><?= htmlspecialchars(number_format($m['costo'], 2)) ?></td>
+                <td><?= htmlspecialchars($m['estado']) ?></td>
+                <td><?= htmlspecialchars($m['proximo_mantenimiento'] ?? '—') ?></td>
+                <td>
+                    <a href="editar.php?id=<?= $m['id_mantenimiento'] ?>">✏️ Editar</a> |
+                    <a href="../../controllers/mantenimientoController.php?accion=eliminar&id=<?= $m['id_mantenimiento'] ?>" 
+                       onclick="return confirm('¿Seguro de eliminar este mantenimiento?')">🗑 Eliminar</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
 </table>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>

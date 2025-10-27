@@ -187,7 +187,7 @@ $tipos = $model->listar();
     </style>
 <!-- Fin Barra de navegaccion -->
 
-<h2>🧰 Tipos de Mantenimiento</h2>
+<h2>Tipos de Mantenimiento</h2>
 <a href="agregar.php">➕ Nuevo tipo</a>
 <br><br>
 
